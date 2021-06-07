@@ -13,6 +13,9 @@ var productInCartSchema = new Schema({
     price:Number,
 },{timestamps:true})
 
+var ProductInCart = mongoose.model("ProductInCart",productInCartSchema)
+
+
 var orderSchema = new Schema({
     products: [productInCartSchema],
     transaction_id:{},
@@ -28,5 +31,6 @@ var orderSchema = new Schema({
 
 },{timestamps:true})
 
+var Order = mongoose.model("Order",orderSchema)
 
-module.exports = mongoose.model("Order",orderSchema)
+module.exports = {Order,ProductInCart}

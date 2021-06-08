@@ -1,22 +1,20 @@
-import express from 'express'
-import mongoose from 'mongoose';
-import dotenv from 'dotenv'
+var express = require('express')
+var mongoose = require('mongoose');
+var dotenv = require('dotenv')
 
 // middleware
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import cors from 'cors'
+var bodyParser = require( 'body-parser')
+var cookieParser = require( 'cookie-parser')
+var cors = require('cors')
+
+// Routes
+var authRoutes = require('./routes/authentication')
 
 
 // configurations
 dotenv.config();
 const app = express();
 const PORT = 8000;
-
-// middleware configurations
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(cors());
 
 // DB Connection
 mongoose.connect(process.env.DATABASE,{
@@ -32,8 +30,14 @@ mongoose.connect(process.env.DATABASE,{
     console.log(error);
 })
 
-// 
 
+// middleware configurations
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
+
+// Routes
+app.use("/api/v1",authRoutes)
 
 app.get("/",(req,res) => {
     return res.send('hello')

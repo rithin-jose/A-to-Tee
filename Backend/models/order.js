@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import {ObjectId} from mongoose.Schema;
+var mongoose =  require('mongoose')
+var {ObjectId} = mongoose.Schema;
 
 var Schema =mongoose.Schema
 

@@ -1,7 +1,8 @@
 var mongoose =  require('mongoose')
-import {createHmac} from 'crypto'
-import { v4 as uuidv4 } from 'uuid';
+var crypto = require('crypto')
+var uuidv4 = require('uuid')
 
+var createHmac = crypto.createHmac
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -27,7 +28,6 @@ var userSchema = new Schema({
         trim:true
     },
 
-    // TODO: Password validation
     encrypted_password:{
         type: String,
         required:true
@@ -57,7 +57,7 @@ userSchema.virtual("password")
         return this._password
     })
 
-userSchema.method = {
+userSchema.methods = {
 
     authenticate: function(plainPassword){
         return this.securePassword(plainPassword) ===  this.encrypted_password 

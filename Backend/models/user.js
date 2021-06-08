@@ -1,6 +1,6 @@
 var mongoose =  require('mongoose')
 var crypto = require('crypto')
-var uuidv4 = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 
 var createHmac = crypto.createHmac
 var Schema = mongoose.Schema;
@@ -79,4 +79,4 @@ userSchema.methods = {
 }
 
 // Export in node js
-module.export = mongoose.model("User",userSchema)
+module.exports = mongoose.model("User",userSchema)

@@ -32,3 +32,18 @@ exports.signUp = (req,res) => {
     })
 
 }
+
+exports.signin = (req,res) => {
+    const {email, password} = req.body;
+
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        res.status(422).json({
+            error: res.array()[0].msg
+        })
+    }
+
+    
+        
+}

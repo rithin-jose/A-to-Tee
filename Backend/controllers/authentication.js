@@ -44,6 +44,6 @@ exports.signin = (req,res) => {
         })
     }
 
-    
+    User.findOne()    
         
 }

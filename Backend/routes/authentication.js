@@ -18,7 +18,7 @@ router.post("/signin",
         check("email").isEmail().withMessage("Email is required"),
         check("password").isLength({min:1}).withMessage("Password is Required"),
     ],
-    signUp
+    signIn
 );
 
 router.get("/signout",signOut)

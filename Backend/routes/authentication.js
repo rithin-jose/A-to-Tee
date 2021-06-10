@@ -2,6 +2,8 @@ var express = require('express')
 const { check } = require('express-validator');
 const {signOut,signUp,signIn} = require('../controllers/authentication')
 
+const {isSignedIn} = require("../middleware/index")
+
 var router = express.Router();
 
 router.post("/signup",
@@ -22,5 +24,9 @@ router.post("/signin",
 );
 
 router.get("/signout",signOut);
+
+router.post("/testroute",isSignedIn,(req,res)=>{
+    res.send("test")
+})
 
 module.exports = router;

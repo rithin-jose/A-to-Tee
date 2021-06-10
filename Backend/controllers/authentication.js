@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 
 exports.signOut = (req,res) => {
+    res.clearCookie("token");
     res.json({
         "message":"User Signed out"
     })

@@ -7,8 +7,9 @@ var bodyParser = require( 'body-parser')
 var cookieParser = require( 'cookie-parser')
 var cors = require('cors')
 
-// Routes
+// My Routes
 var authRoutes = require('./routes/authentication')
+var userRoutes = require('./routes/user')
 
 
 // configurations
@@ -30,7 +31,6 @@ mongoose.connect(process.env.DATABASE,{
     console.log(error);
 })
 
-
 // middleware configurations
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -38,6 +38,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/v1",authRoutes)
+app.use("/api/v1",userRoutes)
 
 app.get("/",(req,res) => {
     return res.send('hello')

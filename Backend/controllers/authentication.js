@@ -3,13 +3,6 @@ var {validationResult} = require("express-validator")
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 
-exports.signOut = (req,res) => {
-    res.clearCookie("token");
-    res.json({
-        "message":"User Signed out Successfully"
-    })
-}
-
 exports.signUp = (req,res) => {
     const errors = validationResult(req)
 
@@ -51,7 +44,7 @@ exports.signIn = (req,res) => {
         if(error || !user){
             return res.status(400).json({
                     error:"User not found"
-                })
+            })
         }
 
         if(!user.authenticate(password)){
@@ -75,4 +68,9 @@ exports.signIn = (req,res) => {
     })           
 }
 
-
+exports.signOut = (req,res) => {
+    res.clearCookie("token");
+    res.json({
+        "message":"User Signed out Successfully"
+    })
+}

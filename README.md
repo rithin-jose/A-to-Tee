@@ -17,9 +17,9 @@ To run the development Server run the following command
 
 		npm start
 
-The website will automatically open up at port 3000. If it doesn't open the following in a browser
+The website will automatically open up at port. If it doesn't open the following in a browser
 
-		127.0.0.1:3000 or localhost:3000
+		127.0.0.1:[PORT] or localhost:[PORT]
 
 
 # To run Frontend

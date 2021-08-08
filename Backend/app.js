@@ -11,7 +11,6 @@ var cors = require('cors')
 var authRoutes = require('./routes/authentication')
 var userRoutes = require('./routes/user')
 
-
 // configurations
 dotenv.config();
 const app = express();

@@ -1,7 +1,6 @@
 var User = require('../models/user')
 var {validationResult} = require("express-validator")
 var jwt = require('jsonwebtoken');
-var expressJwt = require('express-jwt');
 
 exports.signUp = (req,res) => {
     const errors = validationResult(req)
@@ -41,6 +40,7 @@ exports.signIn = (req,res) => {
     }
 
     User.findOne({email}, (error,user) => {
+        console.log(user);
         if(error || !user){
             return res.status(400).json({
                     error:"User not found"
@@ -61,7 +61,7 @@ exports.signIn = (req,res) => {
 
         // send response to frontend
         const {_id,first_name,last_name,email,role} = user
-        res.json({
+        return res.json({
             token,
             user:{_id,first_name,last_name,email,role,email}
         })
